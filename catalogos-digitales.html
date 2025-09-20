@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 Catálogos Digitales para WhatsApp - Servicios Tecnológicos Coatepeque</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        
+        .nav-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s;
+            z-index: 1000;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .novedad {
+            background: #f39c12;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #e8f5e8, #ffffff);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #27ae60;
+        }
+        
+        .hero h1 {
+            color: #2d5016;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .ventaja {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #27ae60;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2ecc71;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2::before {
+            content: '';
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+            border-radius: 50%;
+            background: #2ecc71;
+        }
+        
+        .problema-solucion {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .problema {
+            background: linear-gradient(135deg, #ffebee, #ffffff);
+            border: 3px solid #f44336;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .solucion {
+            background: linear-gradient(135deg, #e8f5e8, #ffffff);
+            border: 3px solid #4caf50;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .problema h3 {
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+        
+        .solucion h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        .flecha {
+            font-size: 40px;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .ejemplos-negocios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .negocio-ejemplo {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #2ecc71;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .negocio-ejemplo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .negocio-icono {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .negocio-ejemplo h4 {
+            color: #2d5016;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .negocio-ejemplo p {
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .beneficios-lista {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .beneficios-lista li {
+            padding: 3px 0;
+            color: #2d5016;
+            font-size: 12px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .beneficios-lista li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .proceso {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .paso {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            position: relative;
+        }
+        
+        .paso-numero {
+            background: #2ecc71;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 auto 15px;
+        }
+        
+        .paso h4 {
+            color: #2d5016;
+            margin-bottom: 10px;
+        }
+        
+        .paso p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .paquetes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .paquete {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            border: 3px solid;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        
+        .paquete:hover {
+            transform: scale(1.02);
+        }
+        
+        .paquete.basico {
+            border-color: #3498db;
+        }
+        
+        .paquete.estandar {
+            border-color: #f39c12;
+        }
+        
+        .paquete.premium {
+            border-color: #9b59b6;
+            background: linear-gradient(135deg, #f3e5f5, #ffffff);
+        }
+        
+        .paquete.premium::before {
+            content: '👑 MÁXIMO VALOR';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #9b59b6;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .paquete h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .precio-grande {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .incluye {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .incluye li {
+            padding: 6px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+        
+        .incluye li::before {
+            content: '📋';
+            position: absolute;
+            left: 0;
+            top: 6px;
+        }
+        
+        .comparacion {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .comparacion h3 {
+            color: #2d5016;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .metodo {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metodo.tradicional {
+            background: linear-gradient(135deg, #ffebee, #ffffff);
+            border: 2px solid #f44336;
+        }
+        
+        .metodo.digital {
+            background: linear-gradient(135deg, #e8f5e8, #ffffff);
+            border: 2px solid #4caf50;
+        }
+        
+        .metodo h4 {
+            margin-bottom: 15px;
+        }
+        
+        .metodo.tradicional h4 {
+            color: #c62828;
+        }
+        
+        .metodo.digital h4 {
+            color: #2e7d32;
+        }
+        
+        .desventajas {
+            list-style: none;
+        }
+        
+        .desventajas li {
+            padding: 5px 0;
+            color: #c62828;
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+        
+        .desventajas li::before {
+            content: '❌';
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+        
+        .ventajas {
+            list-style: none;
+        }
+        
+        .ventajas li {
+            padding: 5px 0;
+            color: #2e7d32;
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+        
+        .ventajas li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+        
+        .testimonios {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+        }
+        
+        .testimonio {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .testimonio p {
+            color: #2c3e50;
+            font-style: italic;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .testimonio .autor {
+            color: #666;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .cta p {
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.2s;
+            margin: 5px;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .problema-solucion, .vs-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .flecha {
+                transform: rotate(90deg);
+                font-size: 30px;
+            }
+            
+            .paquetes {
+                grid-template-columns: 1fr;
+            }
+            
+            .proceso {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="nav-back">← Volver al catálogo</a>
+            <div class="header-content">
+                <img src="Logo.png" alt="Logo" class="logo">
+                <h2>📋 Catálogos Digitales para WhatsApp</h2>
+                <p>Organiza tus productos profesionalmente</p>
+                <div class="novedad">🆕 NUEVO SERVICIO</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="hero">
+                <h1>Convierte tu WhatsApp en una tienda profesional</h1>
+                <p>Deja de enviar fotos desordenadas por WhatsApp. Crea un catálogo digital que impresione a tus clientes y aumente tus ventas.</p>
+                <div class="ventaja">📱 Fácil de compartir por WhatsApp</div>
+            </div>
+
+            <div class="section">
+                <h2>❌ ¿Te suena familiar?</h2>
+                <div class="problema-solucion">
+                    <div class="problema">
+                        <h3>😩 PROBLEMA ACTUAL</h3>
+                        <ul class="desventajas">
+                            <li>Fotos desordenadas en el chat</li>
+                            <li>Clientes preguntan precios repetidamente</li>
+                            <li>Se pierden las fotos en conversaciones largas</li>
+                            <li>Parece poco profesional</li>
+                            <li>Difícil mostrar todos los productos</li>
+                            <li>Clientes se aburren buscando</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flecha">→</div>
+                    
+                    <div class="solucion">
+                        <h3>✨ CON CATÁLOGO DIGITAL</h3>
+                        <ul class="ventajas">
+                            <li>Todo organizado profesionalmente</li>
+                            <li>Precios claros en cada producto</li>
+                            <li>Fácil de encontrar y compartir</li>
+                            <li>Imagen súper profesional</li>
+                            <li>Todos los productos visibles</li>
+                            <li>Clientes compran más rápido</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏪 Perfecto para Todo Tipo de Negocio</h2>
+                <div class="ejemplos-negocios">
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">👗</div>
+                        <h4>Boutiques</h4>
+                        <p>Ropa organizada por categorías con precios</p>
+                        <ul class="beneficios-lista">
+                            <li>Vestidos, blusas, pantalones</li>
+                            <li>Precios por tallas</li>
+                            <li>Fotos de calidad</li>
+                            <li>Fácil pedido por WhatsApp</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">🍕</div>
+                        <h4>Restaurantes</h4>
+                        <p>Menú completo con fotos apetitosas</p>
+                        <ul class="beneficios-lista">
+                            <li>Platos con descripción</li>
+                            <li>Precios actualizados</li>
+                            <li>Ofertas especiales</li>
+                            <li>Pedidos más rápidos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">🎂</div>
+                        <h4>Panaderías</h4>
+                        <p>Pasteles y productos horneados</p>
+                        <ul class="beneficios-lista">
+                            <li>Pasteles por ocasión</li>
+                            <li>Panes y dulces</li>
+                            <li>Precios por tamaño</li>
+                            <li>Pedidos anticipados</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">💄</div>
+                        <h4>Salones de Belleza</h4>
+                        <p>Servicios y productos de belleza</p>
+                        <ul class="beneficios-lista">
+                            <li>Lista de servicios</li>
+                            <li>Precios por tratamiento</li>
+                            <li>Productos en venta</li>
+                            <li>Reservas fáciles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">🔧</div>
+                        <h4>Ferreterías</h4>
+                        <p>Herramientas y materiales</p>
+                        <ul class="beneficios-lista">
+                            <li>Herramientas por categoría</li>
+                            <li>Materiales de construcción</li>
+                            <li>Precios actualizados</li>
+                            <li>Cotizaciones rápidas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="negocio-ejemplo">
+                        <div class="negocio-icono">🧸</div>
+                        <h4>Jugueterías</h4>
+                        <p>Juguetes organizados por edad</p>
+                        <ul class="beneficios-lista">
+                            <li>Por edades y géneros</li>
+                            <li>Juegos educativos</li>
+                            <li>Precios familiares</li>
+                            <li>Regalos perfectos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⚡ Cómo Creamos Tu Catálogo</h2>
+                <div class="proceso">
+                    <div class="paso">
+                        <div class="paso-numero">1</div>
+                        <h4>Recopilamos Info</h4>
+                        <p>Nos envías fotos de tus productos y precios por WhatsApp</p>
+                    </div>
+                    
+                    <div class="paso">
+                        <div class="paso-numero">2</div>
+                        <h4>Organizamos Todo</h4>
+                        <p>Creamos categorías lógicas y mejoramos las imágenes</p>
+                    </div>
+                    
+                    <div class="paso">
+                        <div class="paso-numero">3</div>
+                        <h4>Diseño Profesional</h4>
+                        <p>Aplicamos diseño atractivo con tus colores de marca</p>
+                    </div>
+                    
+                    <div class="paso">
+                        <div class="paso-numero">4</div>
+                        <h4>Tu Aprobación</h4>
+                        <p>Revisas y pides cambios hasta que quede perfecto</p>
+                    </div>
+                    
+                    <div class="paso">
+                        <div class="paso-numero">5</div>
+                        <h4>Entrega Final</h4>
+                        <p>Recibes tu catálogo listo para compartir por WhatsApp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💰 Paquetes Diseñados para Tu Negocio</h2>
+                <div class="paquetes">
+                    <div class="paquete basico">
+                        <h3>Catálogo Básico</h3>
+                        <div class="precio-grande">Q75</div>
+                        <ul class="incluye">
+                            <li>Hasta 15 productos</li>
+                            <li>2 categorías máximo</li>
+                            <li>Diseño estándar</li>
+                            <li>Formato para WhatsApp</li>
+                            <li>1 revisión incluida</li>
+                            <li>Entrega en 3 días</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="paquete estandar">
+                        <h3>Catálogo Estándar</h3>
+                        <div class="precio-grande">Q125</div>
+                        <ul class="incluye">
+                            <li>Hasta 30 productos</li>
+                            <li>5 categorías máximo</li>
+                            <li>Diseño personalizado</li>
+                            <li>Múltiples formatos</li>
+                            <li>2 revisiones incluidas</li>
+                            <li>Entrega en 2 días</li>
+                            <li>Botón de WhatsApp directo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="paquete premium">
+                        <h3>Catálogo Premium</h3>
+                        <div class="precio-grande">Q150</div>
+                        <ul class="incluye">
+                            <li>Productos ilimitados</li>
+                            <li>Categorías ilimitadas</li>
+                            <li>Diseño premium personalizado</li>
+                            <li>Todos los formatos</li>
+                            <li>Revisiones ilimitadas</li>
+                            <li>Entrega en 24 horas</li>
+                            <li>Link web personalizado</li>
+                            <li>Actualizaciones por 30 días</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparacion">
+                <h3>📊 Método Tradicional vs Catálogo Digital</h3>
+                <div class="vs-grid">
+                    <div class="metodo tradicional">
+                        <h4>❌ Fotos por WhatsApp</h4>
+                        <ul class="desventajas">
+                            <li>Fotos se pierden en el chat</li>
+                            <li>Clientes preguntan precios siempre</li>
+                            <li>Difícil mostrar todo</li>
+                            <li>Imagen poco profesional</li>
+                            <li>Ventas lentas</li>
+                            <li>Clientes se cansan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flecha">VS</div>
+                    
+                    <div class="metodo digital">
+                        <h4>✅ Catálogo Digital</h4>
+                        <ul class="ventajas">
+                            <li>Todo organizado y accesible</li>
+                            <li>Precios claros siempre visibles</li>
+                            <li>Todos los productos a la vista</li>
+                            <li>Imagen súper profesional</li>
+                            <li>Ventas más rápidas</li>
+                            <li>Clientes compran más</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💬 Lo Que Dicen Nuestros Clientes</h2>
+                <div class="testimonios">
+                    <div class="testimonio">
+                        <p>"Increíble la diferencia. Antes tardaba 20 minutos mostrando fotos por WhatsApp, ahora mis clientes ven todo en 2 minutos y compran más rápido."</p>
+                        <div class="autor">- María López, Boutique "Estilo"</div>
+                    </div>
+                    
+                    <div class="testimonio">
+                        <p>"El catálogo digital cambió mi negocio. Mis clientes me dicen que se ve muy profesional y ahora hacen pedidos más grandes."</p>
+                        <div class="autor">- Carlos Méndez, Restaurante "Sabor Casero"</div>
+                    </div>
+                    
+                    <div class="testimonio">
+                        <p>"Súper recomendado. Ahora puedo mostrar todos mis pasteles organizados y los clientes entienden mejor los precios. Mis ventas aumentaron."</p>
+                        <div class="autor">- Ana García, Pastelería "Dulce Amor"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>🚀 ¿Listo para profesionalizar tu negocio?</h3>
+            <p>Deja de perder ventas por catálogos desorganizados. Crea el tuyo en menos de 3 días.</p>
+            <a href="https://wa.me/50243303210?text=Hola,%20me%20interesa%20crear%20un%20catálogo%20digital%20para%20mi%20negocio.%20¿Puedes%20mostrarme%20ejemplos?" class="whatsapp-btn">📋 Ver Ejemplos</a>
+            <a href="https://wa.me/50243303210?text=Quiero%20cotizar%20un%20catálogo%20digital%20para%20mi%20negocio.%20Tengo%20aproximadamente%20[X]%20productos" class="whatsapp-btn">💰 Cotizar Ahora</a>
+        </div>
+    </div>
+</body>
+</html>
